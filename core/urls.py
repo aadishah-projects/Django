@@ -19,5 +19,7 @@ from django.urls import path
 from home.views import * #TO import all the folders in home
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home , name="home")
+    path('', home , name="home"),
+    path('success_page', success_page , name="success_page"),
+
 ]
