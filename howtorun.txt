@@ -1,0 +1,45 @@
+Here’s a step-by-step guide you can include in your `howtostart.txt` for starting your Django server after a shutdown:
+
+1. **Open Terminal or Command Prompt**: Launch your terminal (Linux/Mac) or Command Prompt (Windows).
+
+2. **Navigate to Project Directory**:
+   - Use the `cd` command to change to the directory where your Django project is located. 
+   - Example: 
+     ```bash
+     cd path/to/your/project
+     ```
+
+3. **Activate the Virtual Environment**:
+   - Activate your virtual environment to ensure all dependencies are correctly loaded.
+   - On Windows:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - On Linux/Mac:
+     ```bash
+     source env/bin/activate
+     ```
+
+4. **Run Database Migrations (if necessary)**:
+   - Ensure your database is up to date with the latest migrations.
+   - Run:
+     ```bash
+     python manage.py migrate
+     ```
+
+5. **Start the Django Development Server**:
+   - Start the server with the following command:
+     ```bash
+     python manage.py runserver
+     ```
+   - By default, this will run the server on `http://127.0.0.1:8000/`.
+
+6. **Access the Application**:
+   - Open a web browser and go to the URL provided by the server (typically `http://127.0.0.1:8000/`).
+
+You can modify or add any additional steps specific to your project!
+
+
+
+
+.\env\Scripts\activate
