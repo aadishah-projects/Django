@@ -9,7 +9,22 @@
     <h1>Hello World, My name is Aditya Shah.</h1>
     <h1>This is from index.html</h1>
     <h1>Printing a List by django</h1>
-    {{peoples}}
+    <!-- {{peoples}} -->
+    <!-- Inserting the given data in a table -->
+    <table>
+        <tr>
+            <th>Sn.no</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        {% for people in peoples%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{people.name}}</td>
+            <td>{{people.age}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
 </body>
 </html>
