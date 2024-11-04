@@ -16,8 +16,10 @@ def home(request):
     {'name': 'Linda Kim', 'age': 6},
     {'name': 'Carlos Rivera', 'age': 28},
 ]
+    text = """
 
-    return render(request, "home/index.html", context = {'peoples' : people} )
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto earum, molestiae corporis maiores vel deleniti quaerat debitis reiciendis numquam?"""
+    return render(request, "home/index.html", context = {'peoples' : people ,'text' : text} )
 
 def success_page(request):
     return HttpResponse ("This is a success page")

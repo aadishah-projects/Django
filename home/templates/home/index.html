@@ -45,6 +45,7 @@
             </td>
         </tr>
         {% endfor %}
+       <p>{{ text|truncatechars:40 }}</p> <!-- Limit the data via django template truncatechars -->
     </table>
 
 </body>
