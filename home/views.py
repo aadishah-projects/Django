@@ -22,5 +22,11 @@ def home(request):
     vegetables = ['tomato' ,'potato', 'onion', 'cucumber']
     return render(request, "home/index.html", context = {'peoples' : people ,'text' : text, 'vegetables' : vegetables} )
 
+def about(request):
+    return render(request, "home/about.html")
+
+def contact(request):
+    return render(request, "home/contact.html")
+
 def success_page(request):
     return HttpResponse ("This is a success page")
