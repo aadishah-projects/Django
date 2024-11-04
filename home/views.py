@@ -17,8 +17,8 @@ def home(request):
     {'name': 'Carlos Rivera', 'age': 28},
 ]
     text = """
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto earum, molestiae corporis maiores vel deleniti quaerat debitis reiciendis numquam?"""
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto earum, molestiae corporis maiores vel deleniti quaerat debitis reiciendis numquam?
+    """
     return render(request, "home/index.html", context = {'peoples' : people ,'text' : text} )
 
 def success_page(request):
