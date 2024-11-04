@@ -19,7 +19,8 @@ def home(request):
     text = """
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto earum, molestiae corporis maiores vel deleniti quaerat debitis reiciendis numquam?
     """
-    return render(request, "home/index.html", context = {'peoples' : people ,'text' : text} )
+    vegetables = ['tomato' ,'potato', 'onion', 'cucumber']
+    return render(request, "home/index.html", context = {'peoples' : people ,'text' : text, 'vegetables' : vegetables} )
 
 def success_page(request):
     return HttpResponse ("This is a success page")

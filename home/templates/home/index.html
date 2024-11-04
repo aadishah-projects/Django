@@ -45,6 +45,14 @@
             </td>
         </tr>
         {% endfor %}
+        <P> {{vegetables}} </p> <!-- passed a list-->
+        <p> {% if "carrot" in vegetables %}
+            Yes carrot is in the list
+            {%else%}
+            No not in the list 
+            {% endif %}
+        </p>
+
        <p>{{ text|truncatechars:40 }}</p> <!-- Limit the data via django template truncatechars -->
     </table>
 
