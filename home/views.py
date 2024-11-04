@@ -10,10 +10,10 @@ def home(request):
     people = [
     {'name': 'Aditya Shah', 'age': 19},
     {'name': 'Sara Ali', 'age': 24},
-    {'name': 'John Doe', 'age': 30},
+    {'name': 'John Doe', 'age': 7},
     {'name': 'Emily Zhang', 'age': 27},
     {'name': 'Michael Brown', 'age': 35},
-    {'name': 'Linda Kim', 'age': 22},
+    {'name': 'Linda Kim', 'age': 6},
     {'name': 'Carlos Rivera', 'age': 28},
 ]
 

@@ -29,12 +29,20 @@
             <th>Sn.no</th>
             <th>Name</th>
             <th>Age</th>
+            <th>Can vote</th>
         </tr>
         {% for people in peoples%}
         <tr>
             <td>{{forloop.counter}}</td>
             <td>{{people.name}}</td>
             <td>{{people.age}}</td>
+            <td>
+            {% if people.age >= 18  %}
+            👍:: Yes
+            {% else  %}
+            👎 :: NO
+            {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>
