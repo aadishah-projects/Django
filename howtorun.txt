@@ -1,5 +1,3 @@
-Here’s a step-by-step guide you can include in your `howtostart.txt` for starting your Django server after a shutdown:
-
 1. **Open Terminal or Command Prompt**: Launch your terminal (Linux/Mac) or Command Prompt (Windows).
 
 2. **Navigate to Project Directory**:
