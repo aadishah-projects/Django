@@ -10,4 +10,4 @@ class Student(models.Model):
     email = models.EmailField()
     address = models.TextField()
     # image = models.ImageField()
-    certificate = models.FileField()
+    # certificate = models.FileField()

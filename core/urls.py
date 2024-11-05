@@ -23,4 +23,6 @@ urlpatterns = [
     path('contact/', contact , name="contact"),
     path('about/', about , name="about"),
     path('success-page', success_page , name="success_page"),
+    path('student/', student_list , name="student"),
+    
 ]

@@ -2,11 +2,14 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from .models import Student as st
 
+def student_list(request):
+    students = st.objects.all()
+    return render(request, "home/student.html",{'students':students})
 
 # Template Engine Transfering list to the index.html by django
 def home(request):
-
     people = [
     {'name': 'Aditya Shah', 'age': 19},
     {'name': 'Sara Ali', 'age': 24},
