@@ -20,13 +20,15 @@ def home(request):
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto earum, molestiae corporis maiores vel deleniti quaerat debitis reiciendis numquam?
     """
     vegetables = ['tomato' ,'potato', 'onion', 'cucumber']
-    return render(request, "home/index.html", context = {'peoples' : people ,'text' : text, 'vegetables' : vegetables} )
+    return render(request, "home/index.html", context = {'peoples' : people ,'text' : text, 'vegetables' : vegetables , 'page' :'index'} )
 
 def about(request):
-    return render(request, "home/about.html")
+    context = {"page":"about"}
+    return render(request, "home/about.html",context)
 
 def contact(request):
-    return render(request, "home/contact.html")
+    context = {"page":"contact"}
+    return render(request, "home/contact.html",context)
 
 def success_page(request):
     return HttpResponse ("This is a success page")
