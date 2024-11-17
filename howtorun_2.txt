@@ -6,3 +6,33 @@ then python manage.py migrate
 How to getintoshell?
 
 python manage.py shell
+>>> from home.models import *
+>>> student_1 = Student( name = "ADITYA SHAH" , age = 19 , email = "", address = "")
+>>> student_1.save()
+>>> Student.objects.all() : shows all the existing object 
+
+OR EDIT THE DATABASE BY DB BROWSER
+
+Methods of CRED(CREATE READ EDIT DELETE)
+ METHOD: 1
+>>> car_1 = Car(car_name = "NAME 1" , speed = 45 )
+>>> car_1.save()
+
+ METHOD: 2
+>>> car = Car(car_name = "NAME 2" , speed = 167)
+>>> car.save()
+
+ METHOD: 3
+>>> Car.objects.create(car_name= "NAME 3" , speed = 160)
+
+ METHOD: 4
+>>> car_dict = {"car_name" : "NAME 4" , "speed" : 133} 
+>>> Car.objects.create(**car_dict)  
+
+
+reading data:
+car = Car.objects.all()
+car // list all the objects included in it.
+for item in car:
+    print(f "Name is {item.car_name} and speed is {item.speed})
+

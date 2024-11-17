@@ -11,3 +11,11 @@ class Student(models.Model):
     address = models.TextField()
     # image = models.ImageField()
     # certificate = models.FileField()
+
+
+class Car(models.Model):
+    car_name = models.CharField(max_length= 500)
+    speed = models.IntegerField(default = 89)
+# just to identify which object represent which car    
+    def __str__(self):
+        return self.car_name 
