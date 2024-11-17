@@ -36,3 +36,15 @@ car // list all the objects included in it.
 for item in car:
     print(f "Name is {item.car_name} and speed is {item.speed})
 
+>>> Car.objects.get(id = 1)
+>>> Car.objects.filter(id = 10) //to avoid error searching for empty objects data
+
+
+UPDATING: 
+>>>  car = Car.objects.get(id = 1) or >>> Car.objects.get(id = 1).car_name
+    car.car_name  = " NEW NAME "
+    car.speed = 45
+    car.save()
+
+     Car.objects.filter(id = 1).update(car_name = "NEWNAME")
+     
