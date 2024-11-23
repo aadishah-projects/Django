@@ -19,6 +19,12 @@ from django.urls import path
 from home.views import * #TO import all the folders in home
 from vege.views import *
 
+
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home , name="home"),
@@ -26,7 +32,11 @@ urlpatterns = [
     path('about/', about , name="about"),
     path('success-page', success_page , name="success_page"),
     path('student/', student_list , name="student"),
-    path('recipes/', recipes , name="recipes"),
-
-    
+    path('recipes/', recipes , name="recipes"),  
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, 
+                            document_root = settings.MEDIA_ROOT
+                            )
+urlpatterns += staticfiles_urlpatterns()
