@@ -29,7 +29,30 @@
                 <button type="submit" class="btn btn-success  " style="margin-top: 10px; width:-webkit-fill-available; ">Add Recipe</button>
             
           </form>
+
         </div>
+        <div >
+          <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Recipe name</th>
+              <th scope="col">Recipe Description</th>
+              <th scope="col">Image </th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for recipe in recipes%}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{recipe.recipe_name}}</td>
+              <td>{{recipe.recipe_description}}</td>
+              <td>{{recipe.recipe_image}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
 
 </body>
