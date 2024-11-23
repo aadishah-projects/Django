@@ -11,18 +11,18 @@
             <hr>
             <div class="form-group mb-3">
 
-              <label for="exampleInputEmail1">Recipe name</label>
+              <label for="exampleRecipeName">Recipe name</label>
               <input name = "recipe_name" type="text" class="form-control" required >
             
             </div>
 
             <div class="form-group mb-3">
-              <label for="exampleInputPassword1"  >Recipe Description</label>
+              <label for="exampleRecipeDescription"  >Recipe Description</label>
               <textarea  class="form-control" name = "recipe_description" required > </textarea>
             </div>
 
             <div class="form-group mb-3">
-                <label for="exampleInputPassword1">Recipe Image</label>
+                <label for="exampleRecipeImage">Recipe Image</label>
                 <input type="file"  name = "recipe_image" class="form-control" >
             </div>
 
@@ -32,9 +32,9 @@
 
         </div>
           <br>
-        <div >
-          
-          <table class="table" >
+        <div>
+        
+          <table class="table table table-bordered table-striped table-hover" >
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -49,7 +49,8 @@
               <th scope="row">{{forloop.counter}}</th>
               <td>{{recipe.recipe_name}}</td>
               <td>{{recipe.recipe_description}}</td>
-              <td>{{recipe.recipe_image}}</td>
+              <td>
+                <img src = "/media/recipe/{{recipe.recipe_image}}" class="img-thumbnail"  style=" max-width: 200px; max-height: 200px; width: 100%; height: 100%; object-fit: cover; position: relative;" ></td>
             </tr>
             {% endfor %}
           </tbody>
