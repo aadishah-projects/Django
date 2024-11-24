@@ -1,0 +1,80 @@
+body {
+    background-image: url('/static/images/background-pattern.svg'); /* Optional background pattern */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.btn-danger:hover {
+    background-color: #ff3c3c; /* Darker shade on hover */
+    box-shadow: 0px 4px 8px rgba(255, 0, 0, 0.3);
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff; /* Light hover effect */
+}
+.table img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+/* Table Styling */
+.styled-table {
+    border-collapse: separate; /* Create distinct borders */
+    border-spacing: 0; /* Remove gaps */
+    width: 100%;
+    border: 1px solid #dee2e6; /* Border around the table */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    overflow: hidden; /* Clean edges */
+    background-color: #ffffff; /* White background for clarity */
+}
+
+.styled-table thead th {
+    border-bottom: 2px solid #dee2e6; /* Thick bottom border for the header */
+    color: #ffffff;
+    background-color: #007bff; /* Primary color header */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #dee2e6; /* Add subtle cell borders */
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f8f9fa; /* Highlight row on hover */
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #fefefe; /* Alternate row color */
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa; /* Alternate row color */
+}
+
+.styled-table img {
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners for images */
+    padding: 2px;
+}
+
+.styled-table td a.btn-danger {
+    box-shadow: 0 2px 6px rgba(255, 92, 92, 0.3); /* Add subtle shadow to the button */
+}
+
+.styled-table td a.btn-danger:hover {
+    background-color: #e63939; /* Darker red on hover */
+}

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-
+from django.http import HttpResponse
 # Create your views here.
 
 def recipes(request):
@@ -25,4 +25,11 @@ def recipes(request):
 
     context = {"page":"recipes",
                'recipes': queryset }
-    return render(request, 'recipes.html',context)
+    return render(request, 'recipes2.html',context)
+
+
+def delete_recipe(request, id):
+    queryset = Recipe.objects.get(id = id)
+    queryset.delete()
+    print("!DATA DELETED")
+    return redirect('/recipes/')

@@ -41,6 +41,7 @@
               <th scope="col">Recipe name</th>
               <th scope="col">Recipe Description</th>
               <th scope="col">Image </th>
+              <th scope="col">Action </th>
             </tr>
           </thead>
           <tbody>
@@ -50,7 +51,9 @@
               <td>{{recipe.recipe_name}}</td>
               <td>{{recipe.recipe_description}}</td>
               <td>
-                <img src = "/media/recipe/{{recipe.recipe_image}}" class="img-thumbnail"  style=" max-width: 200px; max-height: 200px; width: 100%; height: 100%; object-fit: cover; position: relative;" ></td>
+                <img src = "/media/{{recipe.recipe_image}}" class="img-thumbnail"  style=" max-width: 200px; max-height: 200px; width: 100%; height: 100%; object-fit: cover; position: relative;" ></td>
+
+              <td> <a href  = "/delete_recipe/{{recipe.id}}/" class = "btn btn-danger" style = "align-self: auto; position: relative; " >delete </a></td>
             </tr>
             {% endfor %}
           </tbody>

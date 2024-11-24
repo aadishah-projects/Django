@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block start %}
+<body style="background-color: #f5f9ff; font-family: 'Arial', sans-serif;">
+    <!-- Project Title -->
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-primary">Recipe Manager</h1>
+        <p class="lead text-secondary">Organize and manage your recipes with ease</p>
+        <hr class="w-50 mx-auto" style="border-top: 2px solid #007bff;">
+    </div>
+
+    <div class="container mt-5">
+        <!-- Add Recipe Form -->
+        <div class="card col-md-6 mx-auto shadow-lg p-4 border-0" style="background-color: #e3f2fd;">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="text-center text-primary">Add Recipe</h2>
+                <hr class="mb-4">
+                <div class="form-group mb-3">
+                    <label for="recipeName" class="fw-bold text-dark">Recipe Name</label>
+                    <input id="recipeName" name="recipe_name" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="recipeDescription" class="fw-bold text-dark">Recipe Description</label>
+                    <textarea id="recipeDescription" name="recipe_description" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="recipeImage" class="fw-bold text-dark">Recipe Image</label>
+                    <input id="recipeImage" type="file" name="recipe_image" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">Add Recipe</button>
+            </form>
+        </div>
+
+        <!-- Recipes Table -->
+        <div class="mt-5">
+            <h3 class="text-center text-secondary">Your Recipes</h3>
+            <table class="table table-bordered table-hover text-center mt-3 styled-table" style="background-color: #ffffff;">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe Name</th>
+                        <th>Recipe Description</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in recipes %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="fw-bold">{{ recipe.recipe_name }}</td>
+                        <td>{{ recipe.recipe_description }}</td>
+                        <td>
+                            <img src="/media/{{ recipe.recipe_image }}" 
+                                alt="{{ recipe.recipe_name }}" 
+                                class="rounded"
+                                style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                        </td>
+                        <td>
+                            <a href="/delete_recipe/{{ recipe.id }}/" 
+                               class="btn btn-danger btn-sm rounded-pill"
+                               style="padding: 6px 12px; background-color: #ff5c5c; border: none;">
+                               <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+{% endblock %}
