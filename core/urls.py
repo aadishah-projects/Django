@@ -33,7 +33,8 @@ urlpatterns = [
     path('success-page', success_page , name="success_page"),
     path('student/', student_list , name="student"),
     path('recipes/', recipes , name="recipes"),
-    path('delete_recipe/<id>/', delete_recipe, name = 'delete_recipe')  #Dynamic Url
+    path('delete_recipe/<id>/', delete_recipe, name = 'delete_recipe') , #Dynamic Url
+    path('update_recipe/<id>/', update_recipe, name = 'update_recipe')  #Dynamic Url
 ]
 
 if settings.DEBUG:

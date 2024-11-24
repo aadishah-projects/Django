@@ -34,9 +34,19 @@
                 <button type="submit" class="btn btn-primary w-100 mt-3">Add Recipe</button>
             </form>
         </div>
-
+        <br>
+        <div>
+            <nav class="navbar navbar-light bg-light" style ="position: absolute; align-items: center;" >
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </nav>
+        </div>
+        <br>
         <!-- Recipes Table -->
         <div class="mt-5">
+            <br>
             <h3 class="text-center text-secondary">Your Recipes</h3>
             <table class="table table-bordered table-hover text-center mt-3 styled-table" style="background-color: #ffffff;">
                 <thead class="bg-primary text-white">
@@ -45,7 +55,10 @@
                         <th>Recipe Name</th>
                         <th>Recipe Description</th>
                         <th>Image</th>
-                        <th>Action</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +72,14 @@
                                 alt="{{ recipe.recipe_name }}" 
                                 class="rounded"
                                 style="max-width: 150px; max-height: 150px; object-fit: cover;">
-                        </td>
+                            </td>
+                            <td>
+                                <a href="/update_recipe/{{ recipe.id }}/" 
+                                   class="btn btn-success btn-sm rounded-pill"
+                                   style="padding: 6px 12px; background-color: #ff5c5c; border: none;">
+                                   <i class="fas fa-trash-alt"></i> Update
+                                </a>
+                            </td>
                         <td>
                             <a href="/delete_recipe/{{ recipe.id }}/" 
                                class="btn btn-danger btn-sm rounded-pill"
