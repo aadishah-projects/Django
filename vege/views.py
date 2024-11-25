@@ -26,7 +26,7 @@ def recipes(request):
         queryset = queryset.filter(recipe_name__icontains = request.GET.get('search')) 
 
 
-    context = {"page":"recipes",
+    context = {"page":"Recipes",
                'recipes': queryset }
     return render(request, 'recipes2.html',context)
 
