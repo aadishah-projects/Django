@@ -48,3 +48,12 @@ UPDATING:
 
      Car.objects.filter(id = 1).update(car_name = "NEWNAME")
      
+
+Advanced Authentication in django: 
+
+To Access user data::
+
+in shell:
+
+>>> from django.contrib.auth.models import *
+>>> User.objects.all()

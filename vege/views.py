@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 def recipes(request):
@@ -62,4 +64,32 @@ def login_page (request):
 
 
 def register_page (request):
+
+    if request.method == "POST":
+        data = request.POST
+        # user_name = data.get('user_name')
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        emailaddress = data.get('emailaddress')
+        password = data.get('password')
+        
+        user = User.objects.filter(username = emailaddress)
+
+        if user.exists():
+            print("""______________________________ 
+Registration Failed
+--------------------------------""")
+            return redirect('/register/')
+            
+        user  = User.objects.create( 
+            first_name =first_name  ,
+            last_name = last_name,
+            username = emailaddress 
+        )
+        user.set_password(password) #for encryption
+        user.save()
+
+        return redirect('/register/')
+
+
     return render(request, "register.html")
