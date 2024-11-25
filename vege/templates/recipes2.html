@@ -2,14 +2,36 @@
 
 {% block start %}
 <body style="background-color: #f5f9ff; font-family: 'Arial', sans-serif;">
+    
+    <nav class="navbar bg-body-tertiary shadow-sm p-2">
+        <div class="container-fluid">
+          <a class="navbar-brand">Recipe Manager</a>
+          <form class="d-flex" role="search">
+            {% if request.user.is_authenticated %}
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <a href="/logout/" class = "btn btn-success" type="submit">logout</a>
+            {% else%}
+            <a href="/login/" class = "btn btn-success" type="submit">login</a>
+            {% endif%}
+          </form>
+        </div>
+      </nav>
+
+
     <!-- Project Title -->
+    <div class = "container border border-primary rounded-3 p-4 mt-3" style="border-width: 5px;">
+
+        <div class = "container border border-primary rounded-5 p-3 mt-2" style="border-width: 5px; width: fit-content;">
+         <div class="text-start text-muted mt-1" >User: {{request.user}}</div>
+         </div>
     <div class="container text-center py-5">
         <h1 class="display-4 text-primary">Recipe Manager</h1>
         <p class="lead text-secondary">Organize and manage your recipes with ease</p>
         <hr class="w-50 mx-auto" style="border-top: 2px solid #007bff;">
+
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-2">
         <!-- Add Recipe Form -->
         <div class="card col-md-6 mx-auto shadow-lg p-4 border-0" style="background-color: #e3f2fd;">
             <form method="POST" enctype="multipart/form-data">
@@ -58,7 +80,7 @@
         <div class="mt-5">
             <br>
             <h3 class="text-center text-secondary">Your Recipes</h3>
-            <table class="table table-bordered table-hover text-center mt-3 styled-table" style="background-color: #ffffff;">
+            <table class="table table-bordered table-hover text-center mt-3 styled-table border border-primary rounded p-4">
                 <thead class="bg-primary text-white">
                     <tr>
                         <th>#</th>
@@ -102,6 +124,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </body>
 {% endblock %}

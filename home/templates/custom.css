@@ -78,3 +78,10 @@ body {
 .styled-table td a.btn-danger:hover {
     background-color: #e63939; /* Darker red on hover */
 }
+.hello-user.custom-class{
+    font-size: 14px; /* Subtle and clean */
+    font-weight: 300; /* Light appearance */
+    color: #6c757d; /* Neutral gray */
+    text-align: center; /* Align with other elements */
+    margin-top: 15px; /* Balanced spacing */
+}
