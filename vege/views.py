@@ -56,3 +56,10 @@ def update_recipe(request, id):
     
     context = {'recipe': queryset}
     return render(request, 'update_recipes.html', context)
+
+def login_page (request):
+    return render(request, "login.html")
+
+
+def register_page (request):
+    return render(request, "register.html")
