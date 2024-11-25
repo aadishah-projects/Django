@@ -22,6 +22,9 @@ def recipes(request):
     
     queryset = Recipe.objects.all()
 
+    if request.GET.get('search'): #automatically gets the data from front to back without method post
+        queryset = queryset.filter(recipe_name__icontains = request.GET.get('search')) 
+
 
     context = {"page":"recipes",
                'recipes': queryset }
