@@ -8,7 +8,7 @@
         <p class="lead text-secondary">Welcome to the website !</p>
         <hr class="w-50 mx-auto" style="border-top: 2px solid #007bff;">
     </div>
-
+  
     <div class="container mt-5">
         <!-- Add Recipe Form -->
         <div class="card col-md-6 mx-auto shadow-lg p-4 border-0" style="background-color: #e3f2fd;">
@@ -16,7 +16,16 @@
                 {% csrf_token %}
                 <h2 class="text-center text-primary">Register</h2>
                 <hr class="mb-4">
-
+                {% if messages %}
+                <div class="alert alert-secondary" role="alert">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                  </div>
+            {% comment %} <ul class="messages">
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> 
+            </ul> {% endcomment %}
+            {% endif %}
                 <div class="form-group mb-3">
                     <label for="exampleName"><b>Your first name</b></label>
                     <input name = "first_name" type="text" class="form-control" required >

@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -76,9 +78,10 @@ def register_page (request):
         user = User.objects.filter(username = emailaddress)
 
         if user.exists():
-            print("""______________________________ 
-Registration Failed
---------------------------------""")
+#             print("""______________________________ 
+# Registration Failed
+# --------------------------------""")
+            messages.error(request, "The username already exits.")
             return redirect('/register/')
             
         user  = User.objects.create( 
@@ -88,7 +91,7 @@ Registration Failed
         )
         user.set_password(password) #for encryption
         user.save()
-
+        messages.success(request, "Account created successfully.")
         return redirect('/register/')
 
 
