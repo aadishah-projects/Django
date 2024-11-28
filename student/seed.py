@@ -29,9 +29,9 @@ def seed_db(n = 90)->None:
     except Exception as e:
         print(e)
 
-def seed_db_delete(n = 50)-> None:
-    for i in range(0, n):
-        st_obj = Student.objects.all()
-        st_obj.delete()
-        st_id_obj = StudentID.objects.all()
-        st_id_obj.delete()
+# def seed_db_delete(n = 50)-> None:
+#     for i in range(0, n):
+#         st_obj = Student.objects.all()
+#         st_obj.delete()
+#         st_id_obj = StudentID.objects.all()
+#         st_id_obj.delete()
