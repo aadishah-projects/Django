@@ -2,15 +2,26 @@ from django.shortcuts import render
 from .models import *
 # Create your views here.
 from django.core.paginator import Paginator
+from django.db.models import Q
+
 
 def get_student(request):
     queryset = Student.objects.all()
 
     if request.GET.get('search'):
         search = request.GET.get('search')
-        queryset = queryset.filter(student_name__icontains = search )
+        queryset = queryset.filter(
+            Q(student_name__icontains = search ) |
+            Q(department__department__icontains = search ) |
+            Q(student_id__student_id__icontains = search ) |
+            Q(student_email__icontains = search )|
+            Q(student_age__icontains = search )
 
+              )
+                        
 
+           
+    search = request.GET.get('search', '')
     paginator = Paginator(queryset, 25)
     page_number = request.GET.get("page", 1)
     page_obj = paginator.get_page(page_number)
@@ -21,7 +32,7 @@ def get_student(request):
     for num in range(1,page_obj.paginator.num_pages + 1):
         page_list.append(num)
     
-    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list} )
+    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list, 'search_query' : search} )
 
 # Paginator from official documentation
 # def listing(request):
