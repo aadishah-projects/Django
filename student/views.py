@@ -42,3 +42,8 @@ def get_student(request):
 #     page_number = request.GET.get("page")
 #     page_obj = paginator.get_page(page_number)
 #     return render(request, "list.html", {"page_obj": page_obj})
+
+def get_marks(request,student_id):
+
+    queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
+    return render (request, 'marksheet.html', {'queryset' : queryset})

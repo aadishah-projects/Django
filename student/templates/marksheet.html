@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block start%}
+
+    <body style="background-color: #f5f9ff; font-family: 'Arial', sans-serif;">
+        <!-- Project Title -->
+        <div class="container text-center py-5">
+            <h1 class="display-4 text-primary">Students Academic Information</h1>
+            <p class="lead text-secondary">Here is the complete information of student academics </p>
+            <hr class="w-50 mx-auto" style="border-top: 2px solid #007bff;">
+        </div>
+        <div class = "container border border-primary rounded-3 p-4 mt-3" style="border-width: 5px;">
+        <div class="mt-5">
+            {% comment %} <br> {% endcomment %}
+            <h3 class="text-center text-secondary">Students : {{queryset.student.student_id}}</h3>
+            {% comment %} <div class = "mt-5">
+                <div class="mx-auto col-6">
+                    <form>
+                    <div class="form-group mb-3">
+                        <label for="SearchBar" class="fw-bold text-dark">Search Student</label>
+                        <input  name="search" type="text" class="form-control">
+                    </div>
+                    <button type = "submit" class = "btn btn-primary">Search</button>
+                </form>
+                </div> {% endcomment %}
+            <table class="table striped table-bordered table-hover text-center mt-3 styled-table border border-primary rounded p-4">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>#</th>
+                        {% comment %} <th>ID</th> {% endcomment %}
+                        <th>Department</th>
+                        <th>Name</th>
+                        <th>EMAIL</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in queryset %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ student.student_id}}</td>
+                        <td>{{ student.department}}</td>
+                        <td>{{ student.student_name}}</td>
+                        <td>{{ student.student_email}}</td>
+                        <td>{{ student.student_age}}</td>
+                        <td>{{ student.student_address}}</td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- PAGINATION -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    {% if queryset.has_previous %}
+                    {% comment %} <a  class="page-link" href="?page=1" aria-label="first">&laquo; </a> {% endcomment %}
+                    <a class="page-link" href="?search={{ request.GET.search }}&?page={{ queryset.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    {% endif %}
+                  </li>
+                  {% comment %} <span class="current">
+                    Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+                </span> {% endcomment %}
+                 {% for num in page_list %}
+                  <li class="page-item"><a class="page-link" href="?search={{ request.GET.search }}&?page={{num}}">{{num}}</a></li>
+                 {% comment %} <li class="page-item"><a class="page-link" href="?page=1">2</a></li>
+                  <li class="page-item"><a class="page-link" href="?page=1">3</a></li>  {% endcomment %}
+                  {% endfor %}
+
+                  <li class="page-item">
+                    {% if queryset.has_next %}
+                    <a class="page-link" href="?search={{ request.GET.search }}&?page={{ queryset.next_page_number }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    {% comment %} <a  class="page-link" href="?page={{ queryset.paginator.num_pages }}" aria-label="last" >&raquo;</a> {% endcomment %}
+                    {% endif %}
+                  </li>
+                </ul>
+              </nav>
+            {% comment %} <div class="pagination">
+                <span class="step-links">
+                    {% if queryset.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ queryset.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+                    </span>
+            
+                    {% if queryset.has_next %}
+                        <a href="?page={{ queryset.next_page_number }}">next</a>
+                        <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    </body>
+  
+    {% endblock %}
+    
