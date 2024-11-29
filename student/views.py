@@ -11,7 +11,12 @@ def get_student(request):
     page_obj = paginator.get_page(page_number)
 
     print(page_obj.object_list) # This is how data is stored.. 
-    return render(request, 'student.html', {'queryset' : page_obj})
+
+    page_list = []
+    for num in range(1,page_obj.paginator.num_pages + 1):
+        page_list.append(num)
+    
+    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list} )
 
 # Paginator from official documentation
 # def listing(request):
