@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from home.views import * #TO import all the folders in home
 from vege.views import *
-
+from student.views import *
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -31,13 +31,16 @@ urlpatterns = [
     path('contact/', contact , name="contact"),
     path('about/', about , name="about"),
     path('success-page', success_page , name="success_page"),
-    path('student/', student_list , name="student"),
+    # path('student/', student_list , name="student"),
     path('recipes/', recipes , name="recipes"),
     path('delete_recipe/<id>/', delete_recipe, name = 'delete_recipe') , #Dynamic Url
     path('update_recipe/<id>/', update_recipe, name = 'update_recipe'),  #Dynamic Url
     path("login/", login_page, name="login_page"),
     path("logout/", logout_page, name="logout_page"),
-    path("register/", register_page, name="register_page")
+    path("register/", register_page, name="register_page"),
+    path("register/", register_page, name="register_page"),
+    path("students/", get_student, name="get_students")
+
     # path("department/", Department, name="Department"),
     # path("StudentID/", StudentID, name="StudentID"),
 
