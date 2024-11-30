@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import *
 # Create your views here.
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q,Sum
 
 
 def get_student(request):
@@ -49,4 +49,5 @@ def get_student(request):
 
 def get_marks(request,student_id):
     queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
-    return render (request, 'marksheet.html', {'queryset' : queryset})
+    total_marks = queryset.aggregate(total_marks = Sum('marks'))
+    return render (request, 'marksheet.html', {'queryset' : queryset, 'total_marks' : total_marks})
