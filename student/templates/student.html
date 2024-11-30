@@ -37,18 +37,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for student in queryset %}
+                    
+                    
+                    
+               
+                    
+                    {% for student,num in zipped_list %}
                     <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
+                        
+                        {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
+                        {% comment %} {{num = forloop.counter}} {% endcomment %}
+                        <th scope="row">{{ num }}</th>
                         <td>{{ student.student_id}}</td>
                         <td>{{ student.department}}</td>
                         <td>{{ student.student_name}}</td>
                         <td>{{ student.student_email}}</td>
                         <td>{{ student.student_age}}</td>
                         <td>{{ student.student_address}}</td>
-                       
+                        
                     </tr>
                     {% endfor %}
+                    
+                    
                 </tbody>
             </table>
             

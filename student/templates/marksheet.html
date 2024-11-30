@@ -37,9 +37,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{count = page_number * 25}}
+                    {{for num in range(1, count + 1)}}
                     {% for student in queryset %}
                     <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
+                        {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
+                        <th scope="row"> {{num}}</th>
                         <td>{{ student.student_id}}</td>
                         <td>{{ student.department}}</td>
                         <td>{{ student.student_name}}</td>
@@ -48,6 +51,8 @@
                         <td>{{ student.student_address}}</td>
                        
                     </tr>
+
+                    {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>

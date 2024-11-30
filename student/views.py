@@ -32,7 +32,12 @@ def get_student(request):
     for num in range(1,page_obj.paginator.num_pages + 1):
         page_list.append(num)
     
-    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list, 'search_query' : search} )
+    temp = (int(page_number) - 1) * 25 + 1
+    count_list = []
+    for num in range(temp, (int(page_number) * 25) + 1 ):
+        count_list.append(num)
+    zipped_list = zip(queryset,count_list)
+    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list, 'search_query' : search, 'zipped_list' : zipped_list} )
 
 # Paginator from official documentation
 # def listing(request):
