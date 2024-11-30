@@ -26,7 +26,7 @@ def get_student(request):
     page_number = request.GET.get("page", 1)
     page_obj = paginator.get_page(page_number)
 
-    print(page_obj.object_list) # This is how data is stored.. 
+    # print(page_obj.object_list) # This is how data is stored.. 
 
     page_list = []
     for num in range(1,page_obj.paginator.num_pages + 1):
