@@ -6,7 +6,7 @@ fake   = Faker(['en_US'])
 
 
 
-def create_subjects_marks(n = 90):
+def create_subjects_marks():
     try:
         student_objs = Student.objects.all()
         for student in student_objs:
@@ -22,14 +22,17 @@ def create_subjects_marks(n = 90):
         print(e)
 
 
-def seed_db(n = 90)->None:
+def seed_db(n = 1000)->None:
     try:
         for i in range(0, n):
 
             department_obj = Department.objects.all()
             random_index = random.randint(0, len(department_obj)-1)
             department = department_obj[random_index]
-            student_id = f"080BCT{random.randint(0,200)}"
+
+            # student_id = f"080BCT{random.randint(0,200)}"
+            student_id = f"080PUL{i}"
+
             student_name = fake.name()
             student_email = fake.email()
             student_age = random.randint(20, 40)
@@ -47,9 +50,9 @@ def seed_db(n = 90)->None:
     except Exception as e:
         print(e)
 
-# def seed_db_delete(n = 50)-> None:
-#     for i in range(0, n):
-#         st_obj = Student.objects.all()
-#         st_obj.delete()
-#         st_id_obj = StudentID.objects.all()
-#         st_id_obj.delete()
+def seed_db_delete(n = 181)-> None:
+    for i in range(0, n+ 1 ):
+        st_obj = Student.objects.all()
+        st_obj.delete()
+        st_id_obj = StudentID.objects.all()
+        st_id_obj.delete()

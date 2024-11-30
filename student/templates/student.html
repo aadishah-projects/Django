@@ -42,13 +42,16 @@
                     
                
                     
-                    {% for student,num in zipped_list %}
+                    {% for student in queryset %}
                     <tr>
                         
                         {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
                         {% comment %} {{num = forloop.counter}} {% endcomment %}
-                        <th scope="row">{{ num }}</th>
-                        <td>{{ student.student_id}}</td>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            <a href = "{% url 'get_marks' student.student_id %}">{{ student.student_id }} </a>
+                         <!-- basing the route on the basis of name= "route" by using url-->
+                        </td>
                         <td>{{ student.department}}</td>
                         <td>{{ student.student_name}}</td>
                         <td>{{ student.student_email}}</td>
@@ -77,15 +80,17 @@
                             <span class="page-link" aria-hidden="true">&laquo;</span>
                         {% endif %}
                     </li>
-            
-                    <!-- Page Numbers -->
-                    {% for num in page_list %}
+                    <li class="page-item disabled">
+                        <span class="page-link bg-light">Page: <strong>{{ page_number }}</strong> of <strong>{{ queryset.paginator.num_pages }}</strong></span>
+                    </li>
+                    {% comment %} <!-- Page Numbers --> for more than thousands of data {% endcomment %}
+                    {% comment %} {% for num in page_list %}
                         <li class="page-item {% if num == queryset.number %}active{% endif %}">
                             <a class="page-link" href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}page={{ num }}" {% if num == queryset.number %}aria-current="page"{% endif %}>
                                 {{ num }}
                             </a>
                         </li>
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
             
                     <!-- Next Page -->
                     <li class="page-item {% if not queryset.has_next %}disabled{% endif %}">

@@ -39,8 +39,8 @@ urlpatterns = [
     path("logout/", logout_page, name="logout_page"),
     path("register/", register_page, name="register_page"),
     path("register/", register_page, name="register_page"),
-    path("students/", get_student, name="get_students")
-    # path("students/<student_id>", get_marks, name="get_marks"),
+    path("students/", get_student, name="get_students"),
+    path("get-marks/<student_id>", get_marks, name="get_marks")
 
     # path("department/", Department, name="Department"),
     # path("StudentID/", StudentID, name="StudentID"),

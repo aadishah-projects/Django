@@ -10,59 +10,29 @@
         </div>
         <div class = "container border border-primary rounded-3 p-4 mt-3" style="border-width: 5px;">
         <div class="mt-5">
-            {% comment %} <br> {% endcomment %}
-            <h3 class="text-center text-secondary">Students : {{queryset.student.student_id}}</h3>
-            {% comment %} <div class = "mt-5">
-                <div class="mx-auto col-6">
-                    <form>
-                    <div class="form-group mb-3">
-                        <label for="SearchBar" class="fw-bold text-dark">Search Student</label>
-                        <input  name="search" type="text" class="form-control">
-                    </div>
-                    <button type = "submit" class = "btn btn-primary">Search</button>
-                </form>
-                </div> {% endcomment %}
+           
+            <h3 class="text-center text-secondary">Student's Report Card</h3>
             <table class="table striped table-bordered table-hover text-center mt-3 styled-table border border-primary rounded p-4">
-                <thead class="bg-primary text-white">
-                    <tr>
-                        <th>#</th>
-                        {% comment %} <th>ID</th> {% endcomment %}
-                        <th>Department</th>
-                        <th>Name</th>
-                        <th>EMAIL</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        
 
-                    </tr>
-                </thead>
                 <tbody>
-                    {{count = page_number * 25}}
-                    {{for num in range(1, count + 1)}}
-                    {% for student in queryset %}
+                    {% for marks in queryset %}
                     <tr>
-                        {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
-                        <th scope="row"> {{num}}</th>
-                        <td>{{ student.student_id}}</td>
-                        <td>{{ student.department}}</td>
-                        <td>{{ student.student_name}}</td>
-                        <td>{{ student.student_email}}</td>
-                        <td>{{ student.student_age}}</td>
-                        <td>{{ student.student_address}}</td>
-                       
+                        <th scope="row"> {{forloop.counter}}</th>
+                        <td>{{ marks.subject.subject_name}}</td>
+                        <td>{{ marks.marks}}</td>
+                        {% comment %} <td>{{ marks}}</td> {% endcomment %}
                     </tr>
-
-                    {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>
             <!-- PAGINATION -->
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
             
                     {% if queryset.has_previous %}
-                    {% comment %} <a  class="page-link" href="?page=1" aria-label="first">&laquo; </a> {% endcomment %}
+        
                     {% if request.GET.search == '' %}
                     <a class="page-link" href="?page={{ queryset.previous_page_number }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
@@ -74,19 +44,12 @@
                     {% endif %}
                     {% endif %}
                   </li>
-                  {% comment %} <span class="current">
-                    Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
-                </span> {% endcomment %}
-            
-                 {% for num in page_list %}
-            
+                 {% for num in page_list %}    
                  {% if request.GET.search == '' %}
                   <li class="page-item"><a class="page-link" href="?page={{num}}">{{num}}</a></li>
                  {% else %}
                  <li class="page-item"><a class="page-link" href="?search={{ request.GET.search }}&page={{num}}">{{num}}</a></li>
                   {% endif %}
-                 {% comment %} <li class="page-item"><a class="page-link" href="?page=1">2</a></li>
-                  <li class="page-item"><a class="page-link" href="?page=1">3</a></li>  {% endcomment %}
                   {% endfor %}
             
                   <li class="page-item">
@@ -100,30 +63,10 @@
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                       {% endif %}
-                    {% comment %} <a  class="page-link" href="?page={{ queryset.paginator.num_pages }}" aria-label="last" >&raquo;</a> {% endcomment %}
                     {% endif %}
                   </li>
                 </ul>
-              </nav>
-            {% comment %} <div class="pagination">
-                <span class="step-links">
-                    {% if queryset.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ queryset.previous_page_number }}">previous</a>
-                    {% endif %}
-            
-                    <span class="current">
-                        Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
-                    </span>
-            
-                    {% if queryset.has_next %}
-                        <a href="?page={{ queryset.next_page_number }}">next</a>
-                        <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
-            </div>
-        </div>
-    </div> {% endcomment %}
+
     </body>
   
     {% endblock %}

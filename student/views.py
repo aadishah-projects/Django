@@ -18,9 +18,7 @@ def get_student(request):
             Q(student_age__icontains = search )
 
               )
-                        
-
-           
+                                  
     search = request.GET.get('search', '')
     paginator = Paginator(queryset, 25)
     page_number = request.GET.get("page", 1)
@@ -36,8 +34,9 @@ def get_student(request):
     count_list = []
     for num in range(temp, (int(page_number) * 25) + 1 ):
         count_list.append(num)
+
     zipped_list = zip(queryset,count_list)
-    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list, 'search_query' : search, 'zipped_list' : zipped_list} )
+    return render(request, 'student.html', {'queryset' : page_obj, 'page_list': page_list, 'search_query' : search, 'zipped_list' : zipped_list, 'page_number': int(page_number)} )
 
 # Paginator from official documentation
 # def listing(request):
@@ -49,6 +48,5 @@ def get_student(request):
 #     return render(request, "list.html", {"page_obj": page_obj})
 
 def get_marks(request,student_id):
-
     queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
     return render (request, 'marksheet.html', {'queryset' : queryset})
