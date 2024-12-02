@@ -3,7 +3,7 @@ from faker import Faker
 import random
 from .models import *
 fake   = Faker(['en_US'])
-
+from django.db.models import Sum
 
 
 def create_subjects_marks():
@@ -56,3 +56,16 @@ def seed_db_delete(n = 181)-> None:
         st_obj.delete()
         st_id_obj = StudentID.objects.all()
         st_id_obj.delete()
+
+
+def generate_report_card():
+    ranks = Student.objects.annotate(marks = Sum("studentmarks__marks")).order_by('-marks')
+    
+    i = 1
+    for rank in ranks:
+        ReportCard.objects.create(
+            student = rank,
+            student_rank = i
+        )
+        i = i + 1
+        
